@@ -8,19 +8,20 @@
     min-height: 100vh;
 }
 
-#login{
-    background-image: url('/Images/login1.gif');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-}
-#reg-cont{
-    background-color:rgb(255, 255, 255);
-    color: black;
-}
 
 #reg-btn{
     background-color: orange;
     font-weight: 600;
+    border: none;
 }
+
+#reg-heading{
+    background-image: radial-gradient(
+        circle farthest-corner at -1.2% 43.9%, 
+        rgba(252,146,32,1) 16.1%, 
+        rgba(255,4,4,1) 74.3%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /* For modern browsers */
+    color: transparent;  }

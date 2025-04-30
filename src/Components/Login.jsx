@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from './Authcontext';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-export default function Login() {
+export default function Login({ onLoginSuccess }) {
     const navigate = useNavigate();
     const { login } = useAuth();
     const [showPassword, setShowPassword] = useState(false);
@@ -16,6 +16,9 @@ export default function Login() {
 
         if (email === 'abc@gmail.com' && password === '123') {
             login();
+            if (onLoginSuccess) {
+                onLoginSuccess();
+            }
             navigate('/');
         } else {
             alert('Invalid credentials. Please try again.');
@@ -24,9 +27,9 @@ export default function Login() {
 
     return (
         <div id='login' className='flex items-center justify-center min-h-screen bg-gray-100'>
-            <div className='bg-white shadow-lg rounded-lg p-8 w-96'>
-                <h1 className='text-3xl font-bold text-center mb-6'>MILK HUB</h1>
-                <h2 className='text-xl font-semibold text-center mb-4'>Welcome Back</h2>
+            <div className='transparent-bg shadow-lg rounded-lg p-8 w-96'>
+                <h1 id='reg-heading'  className='text-3xl font-bold text-center mb-6'>MILK HUB</h1>
+                <h6 className='font-semibold text-center mb-4'>Welcome Back</h6>
                 <Form onSubmit={handleLogin}>
                     <Form.Group className='mb-4 flex flex-col'>
                         <Form.Label className='text-sm font-medium'>Email address</Form.Label>
@@ -59,7 +62,7 @@ export default function Login() {
                     </Form.Group>
 
                     <div className="flex flex-col items-center">
-                        <Button className='w-full mt-4 p-1 rounded-lg bg-blue-600 text-white hover:bg-blue-500' type="submit">
+                        <Button id='reg-btn' className='w-full mt-2 p-1 rounded-lg bg-blue-600 text-white hover:bg-blue-500' type="submit">
                             Login
                         </Button>
                         <p className='mt-4 text-sm text-gray-600'>
