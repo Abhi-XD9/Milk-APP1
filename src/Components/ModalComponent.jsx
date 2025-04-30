@@ -9,7 +9,7 @@ export default function ModalComponent({ showTrigger, children }) {
       setShowLoginModal(true);
       const timer = setTimeout(() => {
         setShowLoginModal(false);
-      },2500);
+      },3000);
       return () => clearTimeout(timer);
     }
   }, [showTrigger]);

@@ -1,6 +1,5 @@
 import ModalComponent from './ModalComponent';
 import { useAuth } from './Authcontext';
-import { Button } from 'react-bootstrap';
 import HomeLocation from './HomeLocation';
 import { useState } from 'react';
 

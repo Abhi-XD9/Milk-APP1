@@ -7,6 +7,7 @@ import Login from './Components/Login';
 import RegistrationPage from './Components/Registration';
 import Navbar1 from './Components/Navbar1';
 import Footer from './Components/Footer';
+import ForgotPasssword from './Components/ForgotPasssword';
 
 function Layout() {
   const location = useLocation();
@@ -32,6 +33,7 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<RegistrationPage />} />
+        <Route path='/resetpass' element={<ForgotPasssword/>}/>
       </Routes>
     </BrowserRouter>
   );

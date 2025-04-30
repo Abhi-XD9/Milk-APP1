@@ -21,9 +21,11 @@ function SelectLocation({ setShowLocationModal }) {
     // Add further logic here if needed (e.g., API call or state management)
   };
 
+  console.log(selectedLocation)
   return (
    
       <div className='bg-white p-6 rounded-lg shadow-lg w-[400px]'>
+         <button  onClick={() => setShowLocationModal(false)}>X</button>
         <h1 className='text-2xl font-bold mb-2'>Select Location</h1>
         <p className='text-gray-600 mb-4'>Provide your location to serve you better</p>
         
@@ -50,7 +52,6 @@ function SelectLocation({ setShowLocationModal }) {
         {selectedLocation && (
           <p className='mt-4 text-green-600'>Selected location: {selectedLocation}</p>
         )}
-        <button onClick={() => setShowLocationModal(false)}>X</button>
       </div>
    
   );

@@ -29,11 +29,11 @@ const RegistrationPage = () => {
 
     return (
         <div id='reg' className='flex items-center justify-center min-h-screen bg-gray-100'>
-            <div  className='bg-white shadow-lg rounded-lg p-8 w-96'>
+            <div id='log-cont' className='shadow-lg rounded-lg p-8 w-96'>
                 <h1 id='reg-heading' className='text-3xl font-bold text-center mb-6'>MILK HUB.</h1>
                 {apiError && <p className="text-red-500 text-sm text-center mb-4">{apiError}</p>}
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Form.Group className='mb-4 flex flex-col'>
+                    <Form.Group className='mb-3 flex flex-col'>
                         <Form.Label className='text-sm font-medium'>Full Name</Form.Label>
                         <Form.Control 
                             type="text" 
@@ -44,7 +44,7 @@ const RegistrationPage = () => {
                         {errors.fullname && <p className="text-red-500 text-sm">{errors.fullname.message}</p>}
                     </Form.Group>
 
-                    <Form.Group className='mb-4 flex flex-col'>
+                    <Form.Group className='mb-3 flex flex-col'>
                         <Form.Label className='text-sm font-medium'>Mobile Number</Form.Label>
                         <Form.Control 
                             type="tel" 
@@ -61,7 +61,7 @@ const RegistrationPage = () => {
                         {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
                     </Form.Group>
 
-                    <Form.Group className='mb-4 flex flex-col'>
+                    <Form.Group className='mb-3 flex flex-col'>
                         <Form.Label className='text-sm font-medium'>Email address <span className='text-gray-500'>(Optional)</span></Form.Label>
                         <Form.Control 
                             type="email" 
@@ -71,7 +71,7 @@ const RegistrationPage = () => {
                         />
                     </Form.Group>
 
-                    <Form.Group className='mb-4 flex flex-col'>
+                    <Form.Group className='mb-3 flex flex-col'>
                         <Form.Label className='text-sm font-medium'>Password</Form.Label>
                         <div className="relative">
                             <Form.Control 
@@ -101,10 +101,10 @@ const RegistrationPage = () => {
                     </Form.Group>
 
                     <div className="flex flex-col items-center">
-                        <Button className='w-full mt-4 p-1 rounded-lg  text-white' id='reg-btn' type="submit">
+                        <Button className='w-full mt-3 p-1 rounded-lg  text-white' id='reg-btn' type="submit">
                             Register
                         </Button>
-                        <p className='mt-4 text-sm text-gray-600'>
+                        <p className='mt-2 text-sm text-gray-600'>
                             Already a user? 
                             <span 
                                 className='text-blue-500 cursor-pointer hover:underline' 
