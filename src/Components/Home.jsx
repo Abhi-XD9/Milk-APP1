@@ -11,6 +11,7 @@ export default function Home() {
       <ModalComponent showTrigger={isAuthenticated}>
         <img src="/Images/login3.gif" alt="" />
       </ModalComponent>
+      <h1>HOME from the raj</h1>
     </div>
   );
 }
