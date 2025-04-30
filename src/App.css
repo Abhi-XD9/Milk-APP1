@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+#reg {
+    background-image: url('/Images/background1.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+#login{
+    background-image: url('/Images/login1.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
