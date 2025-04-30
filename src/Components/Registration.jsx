@@ -29,9 +29,9 @@ const RegistrationPage = () => {
 
     return (
         <div id='reg' className='flex items-center justify-center min-h-screen bg-gray-100'>
-            <div className='bg-white shadow-lg rounded-lg p-8 w-96'>
+            <div id='reg-cont' className='bg-white shadow-lg rounded-lg p-8 w-96'>
                 <h1 className='text-3xl font-bold text-center mb-6'>MILK HUB.</h1>
-                <h2 className='text-xl font-semibold text-center mb-4'>Registration Page</h2>
+                {/* <h2 className='text-xl font-semibold text-center mb-4'>Sign Up Below.</h2> */}
                 {apiError && <p className="text-red-500 text-sm text-center mb-4">{apiError}</p>}
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group className='mb-4 flex flex-col'>
@@ -102,7 +102,7 @@ const RegistrationPage = () => {
                     </Form.Group>
 
                     <div className="flex flex-col items-center">
-                        <Button className='w-full mt-4 p-1 rounded-lg bg-blue-600 text-white hover:bg-blue-500' type="submit">
+                        <Button className='w-full mt-4 p-1 rounded-lg  text-white' id='reg-btn' type="submit">
                             Register
                         </Button>
                         <p className='mt-4 text-sm text-gray-600'>

@@ -15,3 +15,12 @@
     background-repeat: no-repeat;
     min-height: 100vh;
 }
+#reg-cont{
+    background-color:rgb(255, 255, 255);
+    color: black;
+}
+
+#reg-btn{
+    background-color: orange;
+    font-weight: 600;
+}
