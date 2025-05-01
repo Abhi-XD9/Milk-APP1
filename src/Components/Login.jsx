@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from './Authcontext';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
@@ -17,7 +16,7 @@ export default function Login({ onLoginSuccess }) {
     const onSubmit = (data) => {
         const { mobile, password } = data;
 
-        if (mobile === '1234567890' && password === '123') {
+        if (mobile === '6302260429' && password === '123') {
             login();
             if (onLoginSuccess) {
                 onLoginSuccess();
@@ -27,7 +26,7 @@ export default function Login({ onLoginSuccess }) {
             setInvalid(true);
             setTimeout(() => {
                 setInvalid(false);
-            }, 3000);
+            }, 3100);
         }
     };
 
@@ -36,10 +35,10 @@ export default function Login({ onLoginSuccess }) {
             <div id='log-cont' className='shadow-lg rounded-lg p-8 w-96'>
                 <h1 id='reg-heading' className='text-3xl font-bold text-center mb-6'>MILK HUB</h1>
                 <h6 className='font-semibold text-center mb-4'>Welcome Back</h6>
-                <Form onSubmit={handleSubmit(onSubmit)}>
-                    <Form.Group className='mb-4 flex flex-col'>
-                        <Form.Label className='text-sm font-medium'>Mobile Number</Form.Label>
-                        <Form.Control
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className='mb-4 flex flex-col'>
+                        <label className='text-sm font-medium'>Mobile Number</label>
+                        <input
                             type="text"
                             placeholder="Enter Your Mobile Number."
                             {...register("mobile", {
@@ -60,12 +59,12 @@ export default function Login({ onLoginSuccess }) {
                             className={`border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.mobile ? 'border-red-500' : ''}`}
                         />
                         {errors.mobile && <p className="text-red-500 text-xs mt-1">{errors.mobile.message}</p>}
-                    </Form.Group>
+                    </div>
 
-                    <Form.Group className='mb-4'>
-                        <Form.Label className='text-sm font-medium'>Password</Form.Label>
+                    <div className='mb-4'>
+                        <label className='text-sm font-medium'>Password</label>
                         <div className="relative">
-                            <Form.Control
+                            <input
                                 type={showPassword ? "text" : "password"}
                                 placeholder="Password"
                                 {...register("password", { required: "Password is required" })}
@@ -79,12 +78,12 @@ export default function Login({ onLoginSuccess }) {
                             </span>
                         </div>
                         {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>}
-                    </Form.Group>
+                    </div>
 
                     <div className="flex flex-col items-center">
-                        <Button id='reg-btn' className='w-full mt-2 p-1 rounded-lg bg-blue-600 text-white hover:bg-blue-500' type="submit">
+                        <button id='reg-btn' className='w-full mt-2 p-1 rounded-lg bg-blue-600 text-white hover:bg-blue-500' type="submit">
                             Login
-                        </Button>
+                        </button>
                         <div className='flex justify-between w-full'>
                             <p className='mt-4 text-sm text-gray-900'>
                                 New user?
@@ -98,7 +97,7 @@ export default function Login({ onLoginSuccess }) {
                             <p onClick={() => navigate('/resetpass')} className='mt-4 cursor-pointer hover:underline text-sm text-gray-900'>Forgot Password?</p>
                         </div>
                     </div>
-                </Form>
+                </form>
 
                 <ModalComponent className='h-[300px]'  showTrigger={invalid}>
                     <img src="/Images/invalid-cred.gif" className=' rounded-lg'  alt="" />

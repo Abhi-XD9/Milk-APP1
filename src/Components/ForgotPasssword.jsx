@@ -77,6 +77,7 @@ export default function ForgotPasssword() {
 
                         <Form.Group className='mb-4 flex flex-col'>
                             <Form.Label className='text-sm font-medium'>Mobile Number</Form.Label>
+                            <div className='flex w-full gap-2'>
                             <Form.Control
                                 type="text"
                                 placeholder="Enter Your Mobile Number."
@@ -95,8 +96,12 @@ export default function ForgotPasssword() {
                                         message: "Mobile number must contain only digits"
                                     }
                                 })}
-                                className={`border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.mobile ? 'border-red-500' : ''}`}
+                                
+                                    className={`border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.mobile ? 'border-red-500' : ''}`}
                             />
+                             <button type='button' className='w-1/4'>Get OTP</button>
+                            
+                            </div>
                             {errors.mobile && <p className="text-red-500 text-xs mt-1">{errors.mobile.message}</p>}
                         </Form.Group>
                         <Form.Group className='mb-4 flex flex-col'>
@@ -127,7 +132,7 @@ export default function ForgotPasssword() {
                 )}
             </div>
             <ModalComponent showTrigger={forgot}>
-                <img src="Images/forgot-home.gif" className='w-full' alt="" />
+                <img src="Images/chi-chi-avesam-star.gif" className='w-full rounded-lg' alt="" />
             </ModalComponent>
         </div>
     );

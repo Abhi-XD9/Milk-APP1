@@ -1,23 +1,29 @@
 import ModalComponent from './ModalComponent';
 import { useAuth } from './Authcontext';
 import HomeLocation from './HomeLocation';
-import { useState } from 'react';
 
 export default function Home() {
-  const { isAuthenticated } = useAuth();
-  const [showLocationModal, setShowLocationModal] = useState(true);
-  
+  const { isAuthenticated, showLocationModal, setShowLocationModal } = useAuth();
+
   return (
-    <div>
-      <h1>HOME</h1>
+    <div className="relative min-h-screen bg-gray-50 p-4">
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">HOME</h1>
+
+      {/* ModalComponent with GIF */}
       <ModalComponent showTrigger={isAuthenticated}>
-        <img src="/Images/login3.gif" alt="" />
+        <img
+          src="/Images/mathu-vadalara-satya.gif"
+          alt="Funny GIF"
+          className="rounded-lg mx-auto max-w-full h-auto shadow-md"
+        />
       </ModalComponent>
-  
-      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        {showLocationModal && <HomeLocation setShowLocationModal={setShowLocationModal} />}
-      </div>
+
+      {/* Centered HomeLocation modal */}
+      {showLocationModal && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <HomeLocation setShowLocationModal={setShowLocationModal} />
+        </div>
+      )}
     </div>
   );
 }
-

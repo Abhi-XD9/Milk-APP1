@@ -1,73 +1,72 @@
-
-import React, { useContext } from 'react'
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import {useNavigate} from 'react-router-dom';
+import React from 'react';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useAuth } from './Authcontext';
 
 export default function Navbar1() {
-  const navigate = useNavigate()
-  const { isAuthenticated,logout } = useAuth();
+  const navigate = useNavigate();
+  const { isAuthenticated, logout, selectedCity, setShowLocationModal } = useAuth();
 
-  
-  const handleLogout =()=>{
-      logout()
-  }
+  const handleLogout = () => {
+    logout();
+  };
 
-  const handleclick = (e)=>{
-    e.preventDefault();
-    (setSearch(search))
-  }
-
-  if (!isAuthenticated) {
-    return null;
-  }
+  if (!isAuthenticated) return null;
 
   return (
+    <Navbar id='navbar' expand="lg" sticky="top">
+      <Container className="container d-flex align-items-center justify-content-between">
+        {/* Left side: Logo and selected city */}
+        <Navbar.Brand onClick={() => navigate('/')} className="cursor-pointer me-4 d-flex align-items-center gap-3">
+          <img src="Images/logo-brand.png" alt="Brand Logo" width={100} />
+          {selectedCity && (
+            <span
+              className="text-lg font-semibold text-gray-500 cursor-pointer"
+              onClick={() => setShowLocationModal(true)}
+              title="Change Location"
+            >
+              Deliver In
+              <div className="d-flex align-items-center gap-1 text-gray-700">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  className="bi bi-geo-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.3 1.3 0 0 0-.37.265.3.3 0 0 0-.057.09V14l.002.008.016.033a.6.6 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.6.6 0 0 0 .146-.15l.015-.033L12 14v-.004a.3.3 0 0 0-.057-.09 1.3 1.3 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465s-2.462-.172-3.34-.465c-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411"
+                  />
+                </svg>
+                {selectedCity}
+              </div>
+            </span>
+          )}
+        </Navbar.Brand>
 
-    <Navbar expand='lg' className="navbar bg-white" sticky="top">
+      
+        <Nav className="d-flex flex-row align-items-center">
+          <Nav.Link onClick={() => navigate('/')} className="px-3">Products</Nav.Link>
+          <Nav.Link onClick={() => navigate('/')} className="px-3">Reviews</Nav.Link>
+          <Nav.Link onClick={() => navigate('/')} className="px-3">Account</Nav.Link>
+        </Nav>
 
-      <Container fluid >
-        <Navbar.Brand onClick={()=>navigate('/')}><img className='brand' src="Images/Brands.png" width={100} alt="" /></Navbar.Brand>
+        
+        <div className="d-flex align-items-center">
+          <Nav.Link onClick={() => navigate('/')} className="me-4 p-0 d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-bag" viewBox="0 0 16 16">
+              <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+            </svg>
+          </Nav.Link>
 
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="navlink-container"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            <Nav.Link id='navlink' onClick={()=>navigate('/')}>Home</Nav.Link>
-            <Nav.Link id='navlink' onClick={()=>navigate('/fashion')}>Fashion</Nav.Link>
-            <Nav.Link id='navlink' onClick={()=>navigate('/beauty')}>Beauty</Nav.Link>
-            <Nav.Link id='navlink' onClick={()=>navigate('/gadgets')}>Gadgets</Nav.Link>
-            <Nav.Link id='navlink' onClick={()=>navigate('/')}>Account</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-        <Form className="navform d-flex">
-          <Form.Control
-            type="search"
-            placeholder="Search"
-            className="me-2"
-            aria-label="Search"
-            onChange={(e)=>setSearch(e.target.value)}
-          />
-          <Button id='nav-btn' onClick={handleclick}  variant="outline-dark">Search</Button>
-        </Form>
-        <Nav.Link className='icons'  onClick={()=>navigate('/liked')}><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-box2-heart" viewBox="0 0 16 16">
-          <path d="M8 7.982C9.664 6.309 13.825 9.236 8 13 2.175 9.236 6.336 6.31 8 7.982" />
-          <path d="M3.75 0a1 1 0 0 0-.8.4L.1 4.2a.5.5 0 0 0-.1.3V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4zm0 1H7.5v3h-6zM8.5 4V1h3.75l2.25 3zM15 5v10H1V5z" />
-        </svg></Nav.Link>
-        <Nav.Link className='icons' onClick={()=>navigate('/cart')}><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-          <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
-        </svg></Nav.Link>
-        <button onClick={handleLogout} className='btn btn-dark'>Log Out</button>
-        <Navbar.Toggle aria-controls="navbarScroll" />
+          <Button variant="dark" onClick={handleLogout}>
+            Log Out
+          </Button>
+        </div>
       </Container>
     </Navbar>
-
-  )
+  );
 }

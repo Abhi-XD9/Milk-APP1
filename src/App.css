@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 #reg {
     background-image: url('/Images/login-bag2.jpg');    background-size: cover;
     background-position: center;
@@ -44,6 +43,23 @@
 }
 
 .footer{
-    position: fixed;
+    position: sticky;
     bottom: 0;
 }
+
+.custom-modal .modal-content {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  #navbar{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+  }
+  
+
+
+   
